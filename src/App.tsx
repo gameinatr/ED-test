@@ -1,7 +1,8 @@
 import "./App.css";
 
 import React, { useState } from "react";
-import { Card, Layout, Space } from "antd";
+import { Card, FloatButton, Layout, Space } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
@@ -39,6 +40,17 @@ const App: React.FC = () => {
           })}
         </Content>
       </Layout>
+      <FloatButton
+        icon={<PlusOutlined />}
+        onClick={() => {
+          const newCard: IToDoCard = {
+            content: "New ToDo",
+            date: Date.now(),
+            id: cards.length + 1,
+          };
+          setCards([...cards, newCard]);
+        }}
+      />
     </Space>
   );
 };
