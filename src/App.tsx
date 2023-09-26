@@ -1,25 +1,9 @@
-import "./App.css";
-
 import React, { useState } from "react";
 import { Card, FloatButton, Layout, Space } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-const { Header, Footer, Sider, Content } = Layout;
-const headerStyle: React.CSSProperties = {
-  textAlign: "center",
-  paddingInline: 50,
-  lineHeight: "64px",
-  backgroundColor: "#fff",
-};
-const contentStyle: React.CSSProperties = {
-  textAlign: "center",
-  minHeight: "80vh",
-};
-
-interface IToDoCard {
-  content: string;
-  date: number;
-  id: number;
-}
+import { IToDoCard } from "./@types";
+import { cardStyle, contentStyle, headerStyle } from "./styling";
+const { Header, Content } = Layout;
 
 const App: React.FC = () => {
   const [cards, setCards] = useState<IToDoCard[]>([
@@ -33,7 +17,7 @@ const App: React.FC = () => {
         <Content style={contentStyle}>
           {cards.map((card: IToDoCard) => {
             return (
-              <Card key={card.id} title={card.date.toString()}>
+              <Card style={cardStyle} key={card.id} title={card.date.toString()}>
                 {card.content}
               </Card>
             );
