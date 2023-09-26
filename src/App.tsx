@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Card, FloatButton, Layout, Space } from "antd";
+import { FloatButton, Layout, Space } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { IToDoCard } from "./@types";
-import { cardStyle, contentStyle, headerStyle } from "./styling";
+import { contentStyle, headerStyle } from "./styling";
+import { ToDoCard } from "./ToDoCard";
 const { Header, Content } = Layout;
 
 const App: React.FC = () => {
@@ -16,11 +17,7 @@ const App: React.FC = () => {
         <Header style={headerStyle}>Header</Header>
         <Content style={contentStyle}>
           {cards.map((card: IToDoCard) => {
-            return (
-              <Card style={cardStyle} key={card.id} title={card.date.toString()}>
-                {card.content}
-              </Card>
-            );
+            return <ToDoCard card={card} cards={cards} setCards={setCards} />;
           })}
         </Content>
       </Layout>
